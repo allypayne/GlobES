@@ -1,7 +1,9 @@
 import numpy as np
 import os
 import time
-        
+
+import matplotlib.pyplot as plt
+
 folder= '/Users/apayne3/Desktop/GlobES/Checlair_plots/'
 
 # "Get in the habit of only saving data that you need "
@@ -110,7 +112,8 @@ for file in sorted(os.listdir()):
         else:
             name= file[0:7]
             file_list.append(name)
-        
+        plt.plot(store_data_vk[0,:,0,0])
+        plt.show()        
         for file in file_list:
             outfile = 'binary_file_out_'+file+'.dat'
             # the code will raise an error if the file already exists- it wont add data to it
