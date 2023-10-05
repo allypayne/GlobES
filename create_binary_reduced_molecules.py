@@ -91,11 +91,11 @@ for file in sorted(os.listdir()):
          # it should create 6x28 resultant arrays with 144x91 data points
          # where every point in array is equal to the value of the molecule at layer that layer
          # beginning with a zeros array and replacing the values as you go is a much faster process than looping over every value in array 
-        store_data_vk = np.zeros(shape=(len(molecules),num_layers_int,144,91))
+        store_data_vk = np.zeros(shape=(len(molecules),num_layers_int,91,144))
         for i in range(len(molecules)):
-            rep_arr = np.repeat(abundance_files[i][0],repeats=144*91)
-            rep_arr_rs = np.reshape(rep_arr,newshape=(num_layers_int,144,91))
-            store_data_vk[i,:,:,:] = rep_arr_rs = np.reshape(rep_arr,newshape=(num_layers_int,144,91)) #np.tile(abundance_files[i][0],reps=(num_layers_int,144,91))
+            rep_arr = np.repeat(abundance_files[i][0],repeats=91*144)
+            rep_arr_rs = np.reshape(rep_arr,newshape=(num_layers_int,91,144))
+            store_data_vk[i,:,:,:] = rep_arr_rs = np.reshape(rep_arr,newshape=(num_layers_int,91,144)) #np.tile(abundance_files[i][0],reps=(num_layers_int,144,91))
 
         #print(store_data_vk[0])
         
