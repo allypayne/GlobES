@@ -301,3 +301,60 @@ for file in sorted(os.listdir(atm_path)):
     for line in new_file:
         test= f.write(line)
     f.close()
+
+
+    #### CALL SERVER FOR 3D MODELS
+
+    # This function allows you to call it directly (curl wont work bc files are too big)
+    """
+
+    def call_api(config_path: str, psg_url: str = 'http://localhost:3000',
+             api_key: str = None, output_type: str = None, app: str = None,
+             outfile: str = None) #-> None:
+        
+        Call the PSG api
+    ​
+        Build and execute an API query to communicate with PSG.
+    ​
+        Parameters
+        ----------
+        config_path : str or pathlib.Path
+            The path to the `PSG` config file.
+        psg_url : str, default='https://psg.gsfc.nasa.gov'
+            The URL of the `PSG` API. Use 'http://localhost:3000' if running locally.
+        api_key : str, default=None
+            The key for the public API. Needed only if not runnning `PSG` locally.
+        output_type : str, default=None
+            The type of output to retrieve from `PSG`. Options include 'cfg', 'rad',
+            'noi', 'lyr', 'all'.
+        app : str, default=None
+            The PSG app to call. For example: 'globes'
+        outfile : str, default=None
+            The path to write the PSG output.
+        data = {}
+        with open(config_path,'rb') as file:
+            dat = file.read()
+        data['file'] = dat
+        if api_key is not None:
+            data['key'] = api_key
+        if app is not None:
+            data['app'] = app
+        if output_type is not None:
+            data['type'] = output_type
+        data['option'] = '-s'
+        
+        url = f'{psg_url}/api.php'
+        reply = requests.post(url,data=data,timeout=555555555)
+        if outfile is not None:
+            with open(outfile,'wb') as file:
+                file.write(reply.content)
+        return reply
+    # example
+
+    call_api(config_path=file_name, app='globes', type='set')
+    res = call_api(config_path=cfgfile, app='globes', type='rad')
+
+    with open('globes_output'+file[0:3]'.txt' ,'w') as f:
+        for line in res:
+            f.write(line)
+        """
