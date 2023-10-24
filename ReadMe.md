@@ -8,3 +8,6 @@
 
 ## [create_1d_create_3d.py](/create_1d_create_3d.py)
 -this file creates the config files for both the 1d and 3d models from the 6 earth amtmosphere files to use in psg
+- runs the 1d files directly to the API for the 1d files (had some issues making it work for the 3d files)
+
+
